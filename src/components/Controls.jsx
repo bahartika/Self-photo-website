@@ -36,7 +36,7 @@ const Controls = ({
         </div>
       )}
 
-      <div className="flex gap-4 text-chartreuse">
+      <div className="flex gap-2 md:gap-4 text-chartreuse">
           <div>
             <label className="mr-2 font-semibold">Layout:</label>
             <select

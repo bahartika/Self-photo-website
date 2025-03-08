@@ -51,34 +51,39 @@ const Capture = ({ videoRef }) => {
     setIsCapturing(false);
   };
 
-  const downloadLayout = async () => {
-    if (layoutRef.current) {
-      const { width, height } = layoutRef.current.getBoundingClientRect();
-  
-      const canvas = await html2canvas(layoutRef.current, {
-        backgroundColor: null,
-        logging: false,
-        useCORS: true,
-        scale: 2, 
-      });
+const downloadLayout = async () => {
+  if (layoutRef.current) {
+    const { width, height } = layoutRef.current.getBoundingClientRect();
 
-      // Menjaga aspect ratio agar tidak gepeng
-      const aspectRatio = width / height;
-      const newWidth = 1000; // Atur sesuai kebutuhan
-      const newHeight = newWidth / aspectRatio;
+    const canvas = await html2canvas(layoutRef.current, {
+      backgroundColor: null,
+      logging: false,
+      useCORS: true,
+      scale: 2, 
+    });
 
-      const resizedCanvas = document.createElement("canvas");
-      resizedCanvas.width = newWidth;
-      resizedCanvas.height = newHeight;
-      const ctx = resizedCanvas.getContext("2d");
+    // Menjaga aspect ratio agar tidak gepeng
+    const aspectRatio = width / height;
+    const newWidth = 1000; // Atur sesuai kebutuhan
+    const newHeight = newWidth / aspectRatio;
 
-      // Gambar ulang dengan mempertahankan aspect ratio
-      ctx.drawImage(canvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+    const resizedCanvas = document.createElement("canvas");
+    resizedCanvas.width = newWidth;
+    resizedCanvas.height = newHeight;
+    const ctx = resizedCanvas.getContext("2d");
 
-      const image = resizedCanvas.toDataURL("image/png");
-      saveAs(image, `photo-layout-${selectedLayout}.png`);
-    }
+    // Balik gambar horizontal (mirror)
+    ctx.translate(resizedCanvas.width, 0);
+    ctx.scale(-1, 1);
+
+    // Gambar ulang dengan mempertahankan aspect ratio
+    ctx.drawImage(canvas, 0, 0, resizedCanvas.width, resizedCanvas.height);
+
+    const image = resizedCanvas.toDataURL("image/png");
+    saveAs(image, `photo-layout-${selectedLayout}.png`);
+  }
 };
+
   
   return (
     <div className="flex flex-col justify-center items-center mt-4">

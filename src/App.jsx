@@ -12,7 +12,7 @@ function App() {
         <h1 className="text-3xl font-bold font-quicksand">SELF PHOTO WEBSITE</h1>
       </header>
       <div className="flex flex-col justify-center items-center p-4 min-h-screen md:w-full bg-metal font-quicksand pt-20 pb-10">
-        <div className="md:flex gap-20">
+        <div className="md:flex gap-12">
           <Camera videoRef={videoRef} />
           <Capture videoRef={videoRef} />
         </div>

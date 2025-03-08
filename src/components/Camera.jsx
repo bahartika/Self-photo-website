@@ -4,24 +4,21 @@ const Camera = ({ videoRef }) => {
   const [devices, setDevices] = useState([]);
   const [selectedDeviceId, setSelectedDeviceId] = useState(null);
 
-  // Meminta akses kamera saat aplikasi dimulai
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then((stream) => {
-        // Setelah izin diberikan, ambil daftar perangkat kamera
         navigator.mediaDevices.enumerateDevices().then((deviceInfos) => {
           const videoDevices = deviceInfos.filter(device => device.kind === "videoinput");
           setDevices(videoDevices);
 
           if (videoDevices.length > 0) {
-            setSelectedDeviceId(videoDevices[0].deviceId); // Pilih kamera pertama sebagai default
+            setSelectedDeviceId(videoDevices[0].deviceId);
           }
         });
       })
       .catch((err) => console.error("Error accessing camera:", err));
   }, []);
 
-  // Mengaktifkan kamera berdasarkan pilihan user
   useEffect(() => {
     if (!selectedDeviceId) return;
 

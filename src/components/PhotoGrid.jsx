@@ -6,15 +6,21 @@ const PhotoGrid = ({ photos, selectedLayout, selectedTheme, layoutRef, selectedF
     photos.length > 0 && (
       <div 
         ref={layoutRef} 
-        className={`p-4 border-2 rounded-lg flex ${layouts[selectedLayout] || ""} ${themes[selectedTheme] || ""}`}
+        className={`w-auto p-4 border-2 rounded-lg ${layouts[selectedLayout] || ""} ${themes[selectedTheme] || ""}`}
       >
         {photos.map((photo, index) => (
           <div key={index} className="relative">
-            <img
+            {/* <img
               src={photo}
               alt={`Foto ${index + 1}`}
               className={`${selectedLayout === "Horizontal" ? "w-20 h-20" : "w-30 h-30"} md:w-30 md:h-30 object-cover border rounded-lg`}
               style={{ filter: filters[selectedFilters[index]] || "Normal" }}
+            /> */}
+            <img
+                src={photo}
+                alt={`Foto ${index + 1}`}
+                className={`max-w-auto object-cover border-2 rounded-lg`}
+                style={{ filter: filters[selectedFilters[index]] || "Normal" }}
             />
           </div>
         ))}
