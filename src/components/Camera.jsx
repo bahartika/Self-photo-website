@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Popover from "./Popover";
 
 const Camera = ({ videoRef }) => {
   const [devices, setDevices] = useState([]);
@@ -48,6 +49,7 @@ const Camera = ({ videoRef }) => {
           </option>
         ))}
       </select>
+      <Popover>Ini bagian yang menunjukkan kameramu dan tombol untuk pilih kamera yang tersedia.</Popover>
     </div>
   );
 };

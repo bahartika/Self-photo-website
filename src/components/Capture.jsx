@@ -93,7 +93,7 @@ const downloadLayout = async () => {
 
       {!isCapturing && photos.length === 0 && (
         <button 
-          className="mt-4 bg-blue-500 px-4 py-2 rounded-full hover:bg-blue-700 inset-shadow-lg font-bold inset-shadow-blue-400 text-white px-4 py-2 rounded-full border-2 border-black transition hover:scale-105 cursor-pointer"
+          className="mt-4 bg-blue-500 px-4 py-2 rounded-full hover:bg-blue-700 inset-shadow-lg font-bold inset-shadow-blue-400 text-avocado px-4 py-2 rounded-full border-2 border-black transition hover:scale-105 cursor-pointer"
           onClick={startCountdown}
         >
           Mulai Foto
