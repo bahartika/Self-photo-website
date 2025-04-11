@@ -33,7 +33,7 @@ const Popover = ({ children }) => {
       {isOpen && (
         <div
           ref={popoverRef}
-          className={`bg-white text-center border shadow-md inset-shadow-lg rounded p-2 transition-transform duration-300 ease-in-out transition-opacity duration-300 ease-in-out ${
+          className={`bg-white text-center border shadow-md inset-shadow-lg rounded p-2 transition-transform duration-300 ease-in-out transition-opacity duration-300 ease-in-out md:w-1/4 ${
             isOpen ? "scale-100" : "scale-50"
           }`}
         >

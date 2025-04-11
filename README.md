@@ -1,5 +1,7 @@
 # 📌 Self Photo Website 
 
+![Preview Website]('./src/assets/preview.png')
+
 Ini adalah sebuah website yang menyediakan fitur foto secara mandiri dengan menghasilkan satu frame berisikan 4 foto.
 
 ## 🚀 Fitur
